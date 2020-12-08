@@ -1,0 +1,397 @@
+---
+swagger: "2.0"
+info:
+  description: "DevOps homework"
+  version: "1.0.0"
+  title: "Buycycle"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "127.0.0.1"
+tags:
+- name: "account"
+  description: "Everything about your account"
+- name: "person"
+  description: "Operations about person"
+- name: "deal"
+  description: "Deal operations"
+- name: "transfer"
+  description: "Transfer operations"
+- name: "debt"
+  description: "Debt operations"
+schemes:
+- "http"
+paths:
+  /api/addPerson:
+    post:
+      tags:
+      - "api"
+      summary: "Add a new person to the store"
+      description: ""
+      operationId: "add_person"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Person object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Person"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/getPersons:
+    get:
+      tags:
+      - "api"
+      summary: "Finds Persons by accountId"
+      operationId: "get_persons"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "accountId"
+        in: "query"
+        description: "Account id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Person"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/addAccount:
+    post:
+      tags:
+      - "api"
+      summary: "Add a new account to the store"
+      description: ""
+      operationId: "add_account"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Account object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Account"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/getAccounts:
+    get:
+      tags:
+      - "api"
+      summary: "Finds Accounts by accountId"
+      operationId: "get_accounts"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "accountId"
+        in: "query"
+        description: "Account id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Account"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/addTransfer:
+    post:
+      tags:
+      - "api"
+      summary: "Add a new transfer to the store"
+      description: ""
+      operationId: "add_transfer"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Transfer object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Transfer"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/getTransfers:
+    get:
+      tags:
+      - "api"
+      summary: "Finds Transfers by accountId"
+      operationId: "get_transfers"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "accountId"
+        in: "query"
+        description: "Account id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Transfer"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/addDeal:
+    post:
+      tags:
+      - "api"
+      summary: "Add a new deal to the store"
+      description: ""
+      operationId: "add_deal"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Deal object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/Deal"
+      responses:
+        "200":
+          description: "successful operation"
+        "405":
+          description: "Invalid input"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/getDeals:
+    get:
+      tags:
+      - "api"
+      summary: "Finds deals by accountId"
+      operationId: "get_deals"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "accountId"
+        in: "query"
+        description: "Account id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Deal"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+  /api/getDebts:
+    get:
+      tags:
+      - "api"
+      summary: "Finds debts by accountId"
+      operationId: "get_debts"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "accountId"
+        in: "query"
+        description: "Account id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Debt"
+        "400":
+          description: "Invalid status value"
+      x-swagger-router-controller: "swagger_server.controllers.api_controller"
+definitions:
+  Person:
+    type: "object"
+    required:
+    - "accountId"
+    - "name"
+    properties:
+      accountId:
+        type: "string"
+      name:
+        type: "string"
+      debtors:
+        type: "array"
+        items:
+          $ref: "#/definitions/Person_debtors"
+      lenders:
+        type: "array"
+        items:
+          $ref: "#/definitions/Person_debtors"
+    example:
+      lenders:
+      - amount: "amount"
+        name: "name"
+      - amount: "amount"
+        name: "name"
+      accountId: "accountId"
+      name: "name"
+      debtors:
+      - amount: "amount"
+        name: "name"
+      - amount: "amount"
+        name: "name"
+    additionalProperties: {}
+  Account:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      persons:
+        type: "array"
+        items:
+          type: "string"
+      deals:
+        type: "array"
+        items:
+          type: "string"
+      transfers:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      persons:
+      - "persons"
+      - "persons"
+      transfers:
+      - "transfers"
+      - "transfers"
+      deals:
+      - "deals"
+      - "deals"
+      name: "name"
+    additionalProperties: {}
+  Transfer:
+    type: "object"
+    required:
+    - "accountId"
+    - "amount"
+    - "receiver"
+    - "sender"
+    properties:
+      accountId:
+        type: "string"
+      sender:
+        type: "string"
+      receiver:
+        type: "string"
+      amount:
+        type: "number"
+      currency:
+        type: "string"
+    example:
+      accountId: "accountId"
+      amount: 0.80082819046101150206595775671303272247314453125
+      receiver: "receiver"
+      sender: "sender"
+      currency: "currency"
+    additionalProperties: {}
+  Deal:
+    type: "object"
+    required:
+    - "accountId"
+    - "amount"
+    - "lender"
+    - "members"
+    - "name"
+    - "type"
+    properties:
+      accountId:
+        type: "string"
+      name:
+        type: "string"
+      lender:
+        type: "string"
+      members:
+        type: "array"
+        items:
+          type: "string"
+      amount:
+        type: "number"
+      type: {}
+    example:
+      accountId: "accountId"
+      lender: "lender"
+      amount: 0.80082819046101150206595775671303272247314453125
+      members:
+      - "members"
+      - "members"
+      name: "name"
+      type: ""
+    additionalProperties: {}
+  Debt:
+    type: "object"
+    required:
+    - "accountId"
+    - "amount"
+    - "receiver"
+    - "sender"
+    properties:
+      accountId:
+        type: "string"
+      sender:
+        type: "string"
+      receiver:
+        type: "string"
+      amount:
+        type: "number"
+    example:
+      accountId: "accountId"
+      amount: 0.80082819046101150206595775671303272247314453125
+      receiver: "receiver"
+      sender: "sender"
+    additionalProperties: {}
+  Person_debtors:
+    type: "object"
+    required:
+    - "amount"
+    - "name"
+    properties:
+      name:
+        type: "string"
+      amount:
+        type: "string"
+    example:
+      amount: "amount"
+      name: "name"
