@@ -113,6 +113,12 @@ class Person(Model):
         :param lenders: The lenders of this Person.  # noqa: E501
         :type lenders: List[PersonDebtors]
         """
+        self.swagger_types = {
+            'account_id': str,
+            'name': str,
+            'debtors': List[PersonDebtors],
+            'lenders': List[PersonDebtors]
+        }
 
         self.attribute_map = {
             'account_id': 'accountId',

@@ -39,7 +39,7 @@ class TestApiController(BaseTestCase):
         response = self.client.open(
             '/api/addDeal',
             method='POST',
-            data=json.dumps(body.to_dict()),
+            data=json.dumps(body),
             content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -53,7 +53,7 @@ class TestApiController(BaseTestCase):
         response = self.client.open(
             '/api/addPerson',
             method='POST',
-            data=json.dumps(body.to_dict()),
+            data=json.dumps(body),
             content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -67,7 +67,7 @@ class TestApiController(BaseTestCase):
         response = self.client.open(
             '/api/addTransfer',
             method='POST',
-            data=json.dumps(body.to_dict()),
+            data=json.dumps(body),
             content_type='application/json')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

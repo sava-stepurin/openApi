@@ -29,6 +29,13 @@ class Transfer(Model):
         :param currency: The currency of this Transfer.  # noqa: E501
         :type currency: str
         """
+        self.swagger_types = {
+            'account_id': str,
+            'sender': str,
+            'receiver': str,
+            'amount': float,
+            'currency': str
+        }
 
         self.attribute_map = {
             'account_id': 'accountId',

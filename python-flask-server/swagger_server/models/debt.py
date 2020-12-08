@@ -27,6 +27,12 @@ class Debt(Model):
         :param amount: The amount of this Debt.  # noqa: E501
         :type amount: float
         """
+        self.swagger_types = {
+            'account_id': str,
+            'sender': str,
+            'receiver': str,
+            'amount': float
+        }
 
         self.attribute_map = {
             'account_id': 'accountId',
